@@ -7,8 +7,8 @@
     "frame": false,
     "width": 1920,
     "height": 1080,
-    "fullscreen": true,
-    "toolbar": false,
+    "fullscreen":false,
+    "toolbar": true,
     "resizable": false
   }
 }

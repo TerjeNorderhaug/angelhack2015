@@ -1,11 +1,38 @@
 <html>
 <head>
-	<script type="text/javascript">	
+	<script type="text/javascript">
+	var sprout = require('sprout');
+	function capture() {
+		// alert("capturing");
+			//clearResult();
+			//lc.start();
+			sprout.capture().then(function(id){
+				return sprout.getPicture(id, sprout.SNAPSHOT);
+			}).then(function(object){
+				var image = document.createElement("img");
+				image.src = "data:image/png;base64," + object.picture.Image;
+				image.width = 1024;
+				image.height = 720;
+				var result = document.getElementById("result");
+				result.appendChild(image);
+				//var result2 = opener.window.document.getElementById("result2");
+				//result2.appendChild(image.copy());
+			}).then(function() {
+			//	 lc.stop();
+			//	 showImage();
+			}).fail(function(e){
+				//lc.stop();
+				//showError(e);
+			});
+		}
+
 	</script>	
 </head>
 <body>
 	<div align="center" style="font-size:40px">
 		<h1>Hello, from Sprout Mat</h1>
+		<input type="button" value="Capture" onclick="capture()"/>
+		<div id="result">empty</div>
 	</div>
 </body>
 </html>
